@@ -1,0 +1,12 @@
+.App{
+    margin:0;
+    padding: 0;
+    /* background-image:url(https://www.htmlcsscolor.com/preview/gallery/1E2022.png); */
+    background-color: #1e2022;
+    background-position: fixed;
+    background-size: cover;
+    height: 100vh;
+    min-height: fit-content;
+    min-width: fit-content ;
+    width: 100vw;
+}
