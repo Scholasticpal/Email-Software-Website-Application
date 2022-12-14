@@ -1,0 +1,9 @@
+.mail{
+    display: flex;
+    flex-direction: column;
+}
+
+.mailBody{
+    display: flex;
+    height: 88vh;
+}
