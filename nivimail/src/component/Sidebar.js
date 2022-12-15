@@ -28,9 +28,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 function Sidebar() {
   const [modalOpen, setModalOpen] = useState(false);
   const [focus, setFocus] = useState(false);
-  const [subject, setSubject] = useState('');
-  const [content, setContent] = useState('');
-  const [recipient, setRecipient] = useState('');
+  const [subject, setSubject] = useState("");
+  const [content, setContent] = useState("");
+  const [recipient, setRecipient] = useState("");
 
   return (
     <div className="sidebar">
