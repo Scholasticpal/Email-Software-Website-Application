@@ -49,4 +49,40 @@
 .mail_containerMidOption{
     display: flex;
     padding: 10px;
+    cursor: pointer;
+    align-items:center;
+}
+
+.mail_containerMidOption:hover{
+    background-color: #444;
+}
+
+.mail_containerMidOption:hover > h3{
+    color: #fff;
+}
+
+.mail_containerMidOption > h3{
+    color: #ccc;
+    font-weight: 400;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.mail_containerMidOption:hover > .MuiSvgIcon-root{
+    color: white;
+
+}
+
+.mail_containerMidOption > .MuiSvgIcon-root{
+    color: rgba(255, 255, 255, 0.643);
+    
+}
+
+.mail_ContainerMain{
+    overflow: scroll;
+    -ms-overflow-style: none;
+}
+
+.mail_ContainerMain::-webkit-scrollbar{
+    display: none;
 }

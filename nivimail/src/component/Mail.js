@@ -3,6 +3,7 @@ import Header from './Header';
 import './css/Mail.css';
 import Sidebar from './Sidebar';
 import View from './View';
+import Widget from './Widget';
 
 function Mail() {
   return (
@@ -11,6 +12,7 @@ function Mail() {
     <div className='mailBody'>
       <Sidebar/>
       <View/>
+      <Widget/>
     </div>
     </div>
   )
