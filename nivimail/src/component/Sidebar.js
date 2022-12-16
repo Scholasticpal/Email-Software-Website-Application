@@ -26,6 +26,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/UserSlice";
+import db from '../firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -35,6 +40,31 @@ function Sidebar() {
   const [recipient, setRecipient] = useState("");
 
   const user = useSelector(selectUser)
+
+  const sendMail = (e) =>{
+    e.preventDefault()
+
+    if(recipient && content !== ""){
+      db.collection('sentMails').add({
+        from: user.email,
+        to: recipient,
+        subject: subject,
+        content: content,
+        user: user,
+        sent: true,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+
+      setModalOpen(false)
+      setContent("")
+      setSubject("")
+      setRecipient("")
+      alert('Mail sent successfully.')
+    }
+    else{
+      alert("Please fill all the required fields.")
+    }
+  }
 
   return (
     <div className="sidebar">
@@ -106,7 +136,7 @@ function Sidebar() {
               </div>
               <div className="modalContainerBottom">
                 <div className="modalBottom">
-                  <button>Send</button>
+                  <button onClick={sendMail} type="submit">Send</button>
                   <TextFormatIcon />
                   <AttachFileIcon />
                   <LinkIcon />
@@ -145,11 +175,13 @@ function Sidebar() {
       <div className="sidebarOptionsBottom">
         <div className="sidebarOptions">
           <div className="sidebarOptionIcon">
+          <a href="https://meet.google.com/">
             <img
               src={process.env.PUBLIC_URL + "/images/meet.png"}
               width="20"
               alt="meet"
             />
+          </a>
           </div>
           <div className="sidebarOptionIcon">
             <VideocamIcon />
@@ -162,11 +194,13 @@ function Sidebar() {
         <div className="sidebarBottomLast">
           <div className="sidebarOptions">
             <div className="sidebarOptionIcon">
+            <a href="https://mail.google.com/chat/u/0/?hl=en#chat/welcome">
               <img
                 src={process.env.PUBLIC_URL + "/images/hangouts.png"}
                 width="20"
                 alt="hangout"
               />
+              </a>
             </div>
             <div className="sidebarOption">
               <Avatar 
