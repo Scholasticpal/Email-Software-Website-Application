@@ -24,6 +24,8 @@ import PhotoIcon from "@mui/icons-material/Photo";
 import ScreenLockRotationIcon from "@mui/icons-material/ScreenLockRotation";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/UserSlice";
 
 function Sidebar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,6 +33,8 @@ function Sidebar() {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [recipient, setRecipient] = useState("");
+
+  const user = useSelector(selectUser)
 
   return (
     <div className="sidebar">
@@ -165,7 +169,9 @@ function Sidebar() {
               />
             </div>
             <div className="sidebarOption">
-              <Avatar />
+              <Avatar 
+                src = {user.photo}
+              />
             </div>
           </div>
         </div>
